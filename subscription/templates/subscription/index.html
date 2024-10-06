@@ -1,0 +1,29 @@
+{% extends 'subscription/base.html' %}
+
+{% block form-title-header %}
+    Personal info
+{% endblock %}
+
+{% block form-title-body %}
+    Please provide your name, email address, and phone number
+{% endblock %}
+
+{% block inputs-wrapper %}
+{% csrf_token %}
+{{ form.non_field_errors }}
+<div id="step-1" class="hidden-div"></div>
+<section class="personal-section">
+    <section>
+        <label for="id_userName"><strong>Name</strong></label>
+        <input type="text" name="userName" class="form-control" placeholder="e.g. Stephen King" maxlength="50" required id="id_userName" value="{% if s1.userName %}{{ s1.userName }}{% endif %}">
+    </section>
+    <section>
+        <label for="id_userEmail"><strong>Email</strong></label>
+        <input type="text" name="userEmail" class="form-control" placeholder="e.g. stephenking@gmail.com" maxlength="254" required id="id_userEmail" value="{% if s1.userEmail %}{{ s1.userEmail }}{% endif %}">
+    </section>
+    <section>
+        <label for="id_userMobileNo"><strong>Phone Number</strong></label>
+        <input type="tel" name="userMobileNo" class="form-control" placeholder="e.g. +2349057339147" maxlength="128" required id="id_userMobileNo" value="{% if s1.userMobileNo %}{{ s1.userMobileNo }}{% endif %}">
+    </section>
+</section>
+{% endblock %}

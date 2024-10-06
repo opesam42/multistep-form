@@ -1,0 +1,57 @@
+{% extends 'subscription/base.html' %}
+{% block form-title-header %}
+    Finishing up
+{% endblock %}
+{% block form-title-body %}
+    Double-check everything looks OK before confirming.
+{% endblock %}
+
+
+
+{% block inputs-wrapper %}
+<div id="step-4" class="hidden-div"></div>
+
+    <section>
+        <table>
+            <tr>
+                <td><span class="{{ plan_option_label }}">
+                    {{ plan_option_label }}
+                    </span>
+                    <span class="{{ plan_period_label }}">
+                    ({{ plan_period_label }})
+                    </span>
+                    <div><a href="{% url 'step_two' %}">Change</a> </div>
+                    </td>
+                    
+                <td class="plan_cost"></td>
+            </tr>
+            {% for add_on in step_three_data.add_on %}
+            
+                {% if add_on == 'online_services' %}
+                    <tr class="onlineService">
+                        <td class="title">Online Services</td>
+                        <td class="cost-view"></td>
+                    </tr>
+                {% endif %}
+                {% if add_on == 'larger_storage' %}
+                    <tr class="largerStorage">
+                        <td class="title">Larger Storage</td>
+                        <td class="cost-view"></td>
+                    </tr>
+                {% endif %}
+                {% if add_on == 'customizable' %}
+                <tr class="customizable">
+                    <td class="title">Customizable</td>
+                    <td class="cost-view"></td>
+                </tr>
+                {% endif %}
+
+            {% endfor %}
+            <tr>
+                <td>Total <span class="per_period"></span></td>
+                <td class="total-cost-view"></td>
+            </tr>
+        </table>
+        
+    </section>
+{% endblock %}

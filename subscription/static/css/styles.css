@@ -1,0 +1,383 @@
+/* - Marine blue: hsl(213, 96%, 18%)
+- Purplish blue: hsl(243, 100%, 62%)
+- Pastel blue: hsl(228, 100%, 84%)
+- Light blue: hsl(206, 94%, 87%)
+- Strawberry red: hsl(354, 84%, 57%)
+
+
+### Neutral
+
+- Cool gray: hsl(231, 11%, 63%)
+- Light gray: hsl(229, 24%, 87%)
+- Magnolia: hsl(217, 100%, 97%)
+- Alabaster: hsl(231, 100%, 99%)
+- White: hsl(0, 0%, 100%) */
+
+:root{
+    --marine-blue: hsl(213, 96%, 18%);
+    --purplish-blue : hsl(243, 100%, 62%);
+    --pastel-blue: hsl(228, 100%, 84%);
+    --light-blue: hsl(206, 94%, 87%);
+    --strawberry-red: hsl(354, 84%, 57%);
+    --cool-gray: hsl(231, 11%, 63%);
+    --light-gray: hsl(229, 24%, 87%);
+    --magnolia: hsl(217, 100%, 97%);
+    --alabaster: hsl(231, 100%, 99%);
+    --white: hsl(0, 0%, 100%);
+}
+
+* {
+    box-sizing: border-box;
+}
+body{
+    background-color: hsl(206, 94%, 87%);
+    margin: 0;
+    font-size: 16px;
+    height: 100vh;
+    font-family: "Ubuntu", sans-serif;
+}
+h1{
+    font-size: 2em;
+    color: var(--marine-blue);
+    margin-bottom: .2em;
+}
+main{
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+form{
+    display: flex;
+    flex-direction: column;
+    /* justify-content: space-between; */
+    height: 100vh;
+}
+input{
+    font-family: inherit;
+    font-size: inherit;
+    font-weight: bold;
+}
+
+
+.button-container{
+    display: flex;
+    justify-content: space-between;
+    padding: 5%;
+    margin-top: auto;
+    background-color: white;
+}
+.button-container .btn{
+    display: block;
+    padding: 16px;
+    border: none;
+    border-radius: 4px;
+    background-color: hsl(213, 96%, 18%);
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    cursor: pointer;
+    outline: none;
+    font-style: inherit;
+    font-size: inherit;
+    font-weight: bold;
+}
+.next-btn{
+    color: white;
+}
+.prev-btn{
+    background-color: white !important;
+    color: var(--cool-gray);
+}
+
+#pagination{
+    display: flex;
+    justify-content: center;
+    gap: 16px;
+
+    /* position: relative; */
+    height: 28vh;
+    padding: 4vh;
+    color: white;
+    background-image: url(../images/bg-sidebar-mobile.svg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+}
+
+#pagination .step_no, #pagination .step_title{
+    display: none;
+}
+#pagination .labelno{
+    width: 36px;
+    height: 36px;
+    border: 2px solid white;
+    border-radius: 50%;
+    display: inline-block;
+    padding: 4px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.title-input-wrapper{
+    background-color: white;
+    width: 90%;
+    border-radius: 8px;
+    margin: 0 5vw;
+    padding: 36px 10%;
+    
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+
+    position: relative;
+    top: -3vh;
+}
+
+
+.inputs-wrapper{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    align-items: center;
+}
+
+.inputs-wrapper section{
+    width: 100%;
+}
+
+.inputs-wrapper input[type="text"], input[type="tel"]{
+    width: 100%;
+    height: 36px;
+    display: block;
+}
+
+
+.personal-section{
+    display: flex;
+    flex-direction: column;
+    gap: 1em;
+}
+.personal-section section{
+    display: flex; 
+    flex-direction: column; 
+    gap: .5em;
+}
+
+.period-block input{
+    display: none;
+}
+.period-block{
+    width: fit-content !important;
+    display: flex;
+    justify-content: left;
+    border: 1px solid var(--purplish-blue);
+    cursor: pointer;
+    color: var(--marine-blue);
+    font-weight: bold;
+}
+.period-block label{
+    display: block;
+    padding: .5em;
+}
+
+.plan-block, .add-on-section{
+    display: flex;
+    flex-direction: column;
+    gap: 1.3em;
+}
+
+.plan-block label, .add-on-section label{
+    border: 1px solid var(--purplish-blue);
+    border-radius: 8px;
+    padding: 1.2em;
+    display: flex;
+    gap: 1.5em
+}
+
+.plan-block label section{
+    width: auto;
+}
+.plan-block section.label{
+    display: flex;
+    flex-direction: column;
+    gap: .2em;
+}
+.plan-block label img{
+    height: 80%;
+}
+.plan-block label span{
+    display: block;
+}
+.plan-block label input{
+    display: none;
+}
+
+
+.add-on-section label{
+    justify-content: space-around;
+}
+.add-on-section label input{
+    width: 24px;
+}
+.add-on-section section{
+    width: fit-content;
+}
+.add-on-section section:first-child{
+    display: flex;
+    gap: 1em;
+}
+.add-on-section section:first-child section{
+    display: flex;
+    flex-direction: column;
+    gap: .2em;
+    flex-wrap: wrap;
+}
+.add-on-section .cost{
+    margin-left: auto;
+}
+
+/****** Styling radio labels *********/
+.plan-block label span.title, .add-on-section .title, .personal-section label{
+    color: var(--marine-blue);
+}
+.plan-block label span.amount{
+    color: var(--cool-gray);
+}
+.plan-block label span.extra, .add-on-section .descr{
+    color: var(--marine-blue);
+    font-size: .9em;
+}
+.plan-block label span.hide{
+    display: none;
+}
+
+
+label:has(input[type="radio"]:checked),label:has(input[type="checkbox"]:checked) {
+    background-color: var(--light-blue);
+}
+
+/* .plan-option input{
+    width: 30px;
+}
+.plan-option input + label{
+    display: block;
+    border: 2px solid black;
+    border-radius: 16px;
+}
+.plan-option input:checked + label{
+    background-color: red;
+}
+.plan-option input{
+    display: none;
+} */
+
+@media screen and (min-width: 900px) {
+    body{
+        display: flex;
+        justify-content: center;
+        padding: 2em;
+    }
+    main{
+        border-radius: 16px;
+        background-color: white;
+        justify-content: center;
+        align-items: flex-start;
+        flex-direction: row;
+        justify-content: space-between;
+        width: 85%;
+        height: max-content;
+    }
+    #pagination{
+
+        flex-direction: column;
+        justify-content: left;
+        gap: 2em;
+        height: 90%;
+        width: 35%;
+    }
+    #pagination section{
+        display: flex;
+        gap: 2em
+    }
+    #pagination section div:nth-child(2){
+        display: flex;
+        flex-direction: column;
+        gap: .5em;
+    }
+    #pagination .step_no, #pagination .step_title{
+        display: block;
+    }
+
+    form{
+        width: 100%;
+        height: 90%;
+    }
+    .button-container{
+        width: 90%
+    }
+
+    .title-input-wrapper{
+        top: 0;
+        margin: 0;
+    }
+
+    .plan-block{
+        flex-direction: row;
+        justify-content: center;
+    }
+    .plan-block label{
+        flex-direction: column;
+        flex: 1;
+        /* flex:auto; */
+    }
+}
+
+/***********JS STYLES***************/
+.hide{
+    display: none;
+}
+.highlight{
+    background-color: var(--light-gray);
+    color: var(--marine-blue);
+    font-weight: bolder;
+}
+
+
+
+table{
+    width: 100%;
+    border: none;
+}
+
+tr{
+    background-color: var(--light-gray);
+    height: 2em;
+    margin-bottom: 2em;
+}
+td{
+    padding-left: 1em;
+}
+tr:first-child, tr:last-child{
+    height: 3.5em;
+}
+tr:last-child{
+    background-color: white;
+}
+.Advanced, .Arcade, .Pro, .plan_cost, span.Monthly, span.Yearly {
+    font-weight: 700;
+    font-size: 1.1em;
+    color: var(--marine-blue);
+}
+.total-cost-view{
+    color: var(--purplish-blue);
+    font-size: 1.2em;
+    font-weight: 700;
+}
+a{
+    color: inherit;
+}
+
+

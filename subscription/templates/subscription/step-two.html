@@ -1,0 +1,77 @@
+{% extends 'subscription/base.html' %}
+
+{% block form-title-header %}
+    Select your plan
+{% endblock %}
+
+{% block form-title-body %}
+    You have option of monthly or yearly billing.
+{% endblock %}
+
+{% block inputs-wrapper %}
+    {% csrf_token %}
+    {{ form.non_field_errors }}
+    
+    <div id="step-2" class="hidden-div"></div>
+    <section class="period-block">
+        <label for="id_plan_period_0"><input type="radio" name="plan_period" value="yearly" class="form-check-input" required id="id_plan_period_0" 
+            {% if s2.plan_period == "yearly" %}
+                checked
+            {% elif not s2.plan_period %}
+                checked
+            {% endif %}
+
+            >
+     Yearly</label>
+        <label for="id_plan_period_1"><input type="radio" name="plan_period" value="monthly" class="form-check-input" required id="id_plan_period_1" 
+            {% if s2.plan_period == "monthly" %}
+                checked
+            {% endif %}
+            >
+     Monthly</label>
+    </section>
+
+    <section class="plan-block">
+        <!-- <label for="{{ form.userEmail.id_for_label }}">Email</label><br> -->
+        {% comment %} {{form.plan_option}} {% endcomment %}
+        <label for="arcade">
+            <input type="radio" id="arcade" name="plan_option" value="arcade" {% if s2.plan_option == "arcade" %}checked{% endif %}>
+            <section>
+                <img src="/static/images/icon-arcade.svg" height="36px">
+            </section>
+            <section class="label">
+                <span class="title"><strong>Arcade</strong></span>
+                <span class="amount">$90/yr</span>
+                <span class="extra">2 month free</span>
+            </section>
+        </label> 
+        
+        <label for="advanced">
+            <input type="radio" id="advanced" name="plan_option" value="advanced" {% if s2.plan_option == "advanced" %}checked{% endif %}>
+            <section>
+                <img src="/static/images/icon-advanced.svg" height="36px">
+            </section>
+            <section class="label">
+                <span class="title"><strong>Advanced</strong></span>
+                <span class="amount">$120/yr</span>
+                <span class="extra">2 month free</span>
+            </section>
+        </label> 
+
+        <label for="pro">
+            <input type="radio" id="pro" name="plan_option" value="pro" {% if s2.plan_option == "pro" %}checked{% endif %}>
+            <section>
+                <img src="/static/images/icon-pro.svg" height="36px">
+            </section>
+            <section class="label">
+                <span class="title"><strong>Pro</strong></span>
+                <span class="amount">$150/yr</span>
+                <span class="extra">2 month free</span>
+            </section>
+        </label> 
+        <!-- {{ form }} -->
+    </section>
+    
+{% endblock %}
+
+

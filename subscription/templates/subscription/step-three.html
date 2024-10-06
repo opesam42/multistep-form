@@ -1,0 +1,72 @@
+{% extends 'subscription/base.html' %}
+
+{% block form-title-header %}
+    Pick add-ons
+{% endblock %}
+
+{% block form-title-body %}
+    Add-on help you improve your gaming experience.
+{% endblock %}
+
+{% block inputs-wrapper %}
+    {% csrf_token %}
+    {{ form.non_field_errors }}
+
+    <div id="step-3" class="hidden-div"></div>
+    <section class="add-on-section">
+        <label for="id_add_on_0">
+            <section>
+                <input type="checkbox" name="add_on" value="online_services" id="id_add_on_0" 
+                {% for addOn in s3.add_on %}
+                    {% if  addOn == "online_services"%}
+                        checked
+                    {% endif %}
+                {% endfor %}>
+                <section>
+                    <span class="title"><strong>Online services</strong></span>
+                    <span class="descr">Access to multiplayer games</span>
+                </section>
+            </section>
+            <section class="cost">
+                +$1/mo
+            </section>
+        </label>
+
+        <label for="id_add_on_1">
+            <section>
+                <input type="checkbox" name="add_on" value="larger_storage" id="id_add_on_1" 
+                {% for addOn in s3.add_on %}
+                    {% if  addOn == "larger_storage"%}
+                        checked
+                    {% endif %}
+                {% endfor %}>
+                <section>
+                    <span class="title"><strong>Larger storage</strong></span>
+                    <span class="descr">Extra 1TB of cloud save</span>
+                </section>
+            </section>
+            <section class="cost">
+                +$2/mo
+            </section>
+        </label>
+
+        <label for="id_add_on_2">
+            <section>
+                <input type="checkbox" name="add_on" value="customizable" id="id_add_on_2" 
+                {% for addOn in s3.add_on %}
+                    {% if  addOn == "customizable"%}
+                        checked
+                    {% endif %}
+                {% endfor %}>
+                <section>
+                    <span class="title"><strong>Customizable profile</strong></span>
+                    <span class="descr">Custom theme on your profile</span>
+                </section>
+            </section>
+            <section class="cost">
+                +$2/mo
+            </section>
+        </label>
+        
+    </section>
+{% endblock %}

@@ -1,0 +1,148 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/libphonenumber-js/1.9.49/libphonenumber-js.min.js"></script>
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Ubuntu:ital,wght@0,400&display=swap" rel="stylesheet">
+    <title>Multi-Step Form</title>
+
+    <script>
+        // plan prices from django views
+        var arcade_monthly = parseFloat('{{ subscription.arcadeMonthly }}');
+        var arcade_yearly = parseFloat( '{{ subscription.arcadeYearly }}' );
+        var advanced_monthly = parseFloat( '{{ subscription.advancedMonthly }}' );
+        var advanced_yearly = parseFloat( '{{ subscription.advancedYearly }}' );
+        var pro_monthly = parseFloat( '{{ subscription.proMonthly }}' );
+        var pro_yearly = parseFloat( '{{ subscription.proYearly }}' );
+
+        //add on prices from django views
+        var online_services_monthly = parseFloat( '{{ subscription.onlineServicesMonthly }}' )
+        var online_services_yearly = parseFloat( '{{ subscription.onlineServicesYearly }}' )
+        var larger_storage_monthly = parseFloat( '{{ subscription.largerStorageMonthly }}' )
+        var larger_storage_yearly = parseFloat( '{{ subscription.largerStorageYearly }}' )
+        var customizable_monthly = parseFloat( '{{ subscription.customizableMonthly }}' )
+        var customizable_yearly = parseFloat( '{{ subscription.customizableYearly }}' )
+
+    </script>
+
+    <style>
+        .highlight{
+            background-color: var(--light-gray);
+            color: var(--marine-blue);
+            font-weight: bolder;
+        }
+
+        tr{
+            padding: 10px;
+        }
+
+        #pagination{
+            height: 100vh;
+        }
+
+        label{
+            display: flex;
+            justify-content: space-between;    
+        }
+        .error{
+            color: red;
+        }
+
+        .plan-block .error{
+            flex: none;
+        }
+
+
+
+    </style>
+</head>
+<body>
+    <main>
+        <section id="pagination">
+            
+            <section class="pg1">
+                
+                <div class="labelno">1</div>
+                <div>
+                    <div class="step_no">STEP 1</div>
+                    <div class="step_title">YOUR INFO</div>
+                </div>
+            </section>
+
+            <section class="pg2">
+                <div class="labelno">2</div>
+                <div>
+                    <div class="step_no">STEP 2</div>
+                    <div class="step_title">SELECT PLAN</div>
+                </div>
+            </section>
+
+            <section class="pg3">
+                <div class="labelno">3</div>
+                <div>
+                    <div class="step_no">STEP 3</div>
+                    <div class="step_title">ADD-ONS</div>
+                </div>
+            </section>
+
+            <section class="pg4">
+                <div class="labelno">4</div>
+                <div>
+                    <div class="step_no">STEP 4</div>
+                    <div class="step_title">SUMMARY</div>
+                </div>
+            </section>
+        </section>
+            
+        <form id="multistep-form" method="post">
+               
+            <section class="form-body">
+                <section class="title-input-wrapper">
+                    <section class="form-title">
+                        <h1>
+                            {% block form-title-header %}
+                            {% endblock %}
+                        </h1>
+                        <p>
+                            {% block form-title-body %}
+                            {% endblock %}
+                        </p>
+                        
+                        <!-- <h2>Personal info</h2>
+                        <div>Please provide your name, email address and phone number.</div> -->
+                    </section>
+                    <section class="inputs-wrapper">
+                        {% block inputs-wrapper %}
+                        {% endblock %}
+                    </section>
+                </section>
+                
+            </section>
+            <section class="button-container">
+                <!-- <button class="prev-btn">Go Back</button> -->
+                <a class="prev-btn btn">Go Back</a>
+                <button class="next-btn btn">Next Step</button>
+            </section>
+        </form>
+    </main>
+
+    <!-- <script type="text/javascript" src="{% static 'scripts/script.js' %}"></script> -->
+    <script type="text/javascript" src="{% static 'scripts/script.js' %}"></script>
+    
+    <script>
+        // console.log(togglePrice())
+        // function retrieveSelectedPeriod(){
+        //     const selectedPeriod = sessionStorage.getItem('selectedPeriod');
+        //     return selectedPeriod
+        // }
+        // console.log(retrieveSelectedPeriod())
+        
+    </script>
+
+</body>
+</html>
