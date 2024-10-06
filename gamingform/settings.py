@@ -162,4 +162,4 @@ EMAIL_HOST_USER = 'opesam42@gmail.com'
 EMAIL_HOST_PASSWORD = 'carj rajz pmqu ulrr'
 # DEFAULT_FROM_EMAIL = 'opesam42@gmail.com'
 
-WSGI_APPLICATION = 'form.wsgi.application'
+WSGI_APPLICATION = 'gamingform.wsgi.application'

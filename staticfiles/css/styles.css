@@ -346,9 +346,38 @@ label:has(input[type="radio"]:checked),label:has(input[type="checkbox"]:checked)
 }
 
 
-table, td, tr {
-    border: 1px solid black;
-}
+
 table{
-    background-color: var(--light-gray);
+    width: 100%;
+    border: none;
 }
+
+tr{
+    background-color: var(--light-gray);
+    height: 2em;
+    margin-bottom: 2em;
+}
+td{
+    padding-left: 1em;
+}
+tr:first-child, tr:last-child{
+    height: 3.5em;
+}
+tr:last-child{
+    background-color: white;
+}
+.Advanced, .Arcade, .Pro, .plan_cost, span.Monthly, span.Yearly {
+    font-weight: 700;
+    font-size: 1.1em;
+    color: var(--marine-blue);
+}
+.total-cost-view{
+    color: var(--purplish-blue);
+    font-size: 1.2em;
+    font-weight: 700;
+}
+a{
+    color: inherit;
+}
+
+

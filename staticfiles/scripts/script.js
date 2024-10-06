@@ -2,6 +2,7 @@ step1 = document.getElementById('step-1');
 step2 = document.getElementById('step-2');
 step3 = document.getElementById('step-3');
 step4 = document.getElementById('step-4');
+successPage = document.getElementById('success-page')
 nextBtn = document.querySelector('.next-btn');
 prevBtn = document.querySelector('.prev-btn');
 
@@ -89,7 +90,9 @@ function togglePrice(){
 
 planPeriod.forEach((period)=> {
     period.addEventListener('change', togglePrice);
-})
+});
+document.addEventListener("DOMContentLoaded", togglePrice)
+
 
 
 
@@ -109,7 +112,7 @@ function showStep(){
     if(step3){
         labelNo3.classList.add('highlight');
     }
-    if(step4){
+    if(step4||successPage){
         labelNo4.classList.add('highlight');
     }
 }
@@ -176,20 +179,145 @@ function displaySummary(){
 if(step4){
     document.addEventListener("DOMContentLoaded", displaySummary)
     nextBtn.innerHTML = 'Confirm';
-    console.log(nextBtn.innerHTML)
+    console.log(nextBtn);
+
+}
+if(successPage){
+    nextBtn.style.display = 'none';
+    prevBtn.style.display = 'none';
 }
 
+// redirection using the next and previous button
+function redirect(target, link){
+    window.location.href = link
+}
 
-
-/* function navigate(){
-    if(step4){
-        window.location.href = '/step-three/'
+    if(step2){
+        prevBtn.addEventListener('click', function(){
+            redirect(prevBtn, '../step-one')
+        });
     }
     if(step3){
-        window.location.href = '/step-two/'
+        prevBtn.addEventListener('click', function(){
+            redirect(prevBtn, '../step-two')
+        });
     }
+    if(step4){
+        prevBtn.addEventListener('click', function(){
+            redirect(prevBtn, '../step-three')
+        });
+        
+        nextBtn.addEventListener('click', function(event){
+            event.preventDefault();
+            redirect(nextBtn, '../success')
+        });
+    }
+
+
+
+
+var userName = document.getElementById('id_userName');
+var nameLabel = document.querySelector('label[for="id_userName"]');
+
+var userEmail = document.getElementById('id_userEmail');
+var emailLabel = document.querySelector('label[for="id_userEmail"]');
+
+var mobileNo = document.getElementById('id_userMobileNo');
+var mobleNoLabel = document.querySelector('label[for="id_userMobileNo"]')
+
+var planOptionField = Array.from( document.getElementsByName('plan_option') )
+var planOptionLabel = document.querySelector('.inputs-wrapper')
+
+function createErrorMessage(message){
+    errorMsg = document.createElement('span');
+    errorMsg.innerHTML = message
+    errorMsg.classList.add('error');
+    // hasErrors = true
+    return errorMsg
+}
+
+function checkError(){
+
+    hasErrors = false
+
+
+    errorMessages = document.querySelectorAll('.error');
+    if(errorMessages){
+        errorMessages.forEach(function(errorMsg){
+            errorMsg.remove();
+        })
+    }
+
+    if(step1){
+        // username validation
+        if(userName.value.trim() == ""){
+            errorMsg = createErrorMessage("This field is required")
+            nameLabel.appendChild(errorMsg)
+            hasErrors = true
+        } 
+
+        //user email validation
+        const emailPattern = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+
+        if(userEmail.value.trim() == ""){
+            errorMsg = createErrorMessage("This field is required")
+            emailLabel.appendChild(errorMsg)
+            hasErrors = true
+        } else if (!emailPattern.test(userEmail.value)) {
+            errorMsg = createErrorMessage("Please enter a valid email address");
+            emailLabel.appendChild(errorMsg);
+            hasErrors = true;
+        }
+        
+        //phone number validation
+        if(mobileNo.value.trim() == ""){
+            errorMsg = createErrorMessage("This field is required");
+            mobleNoLabel.appendChild(errorMsg);
+            hasErrors = true;
+        } else if(mobileNo.value.length > 0 && mobileNo.value.split('')[0] != '+'){
+            mobileNo.value = `+${mobileNo.value}`;
+            console.log(2)
+        }else if(mobileNo.value.length < 6){
+            errorMsg = createErrorMessage("Invalid mobile number format");
+            mobleNoLabel.appendChild(errorMsg);
+            hasErrors = true;
+        } 
+        else{ 
+            try{
+                if( !(( libphonenumber.parsePhoneNumber(mobileNo.value) ).isValid()) ){
+                errorMsg = createErrorMessage("Invalid mobile number format");
+                mobleNoLabel.appendChild(errorMsg);
+                hasErrors = true;
+                }
+            } catch(err){
+                errorMsg = createErrorMessage("Invalid mobile number format");
+                mobleNoLabel.appendChild(errorMsg);
+                hasErrors = true;
+            }
+        }
+    }
+        
+    
+
     if(step2){
-        window.location.href = '/step-one/'
+        var isChecked = planOptionField.some(function(plan){
+            return plan.checked;
+        })
+        if(!isChecked){
+            errorMsg = createErrorMessage("This field is required");
+            planOptionLabel.appendChild(errorMsg)
+            hasErrors = true
+        }
     }
-} 
-prevBtn.addEventListener('click', navigate) */
+    return hasErrors;
+}
+
+nextBtn.addEventListener('click', function(event){
+    hasErrors = checkError()
+    
+    //if no errors
+    if(hasErrors){
+        event.preventDefault();
+    }
+    // checkError();
+});
