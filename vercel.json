@@ -2,7 +2,7 @@
     "version": 2,
     "builds": [
       {
-        "src": "form/wsgi.py",
+        "src": "gamingform/wsgi.py",
         "use": "@vercel/python",
         "config": {
           "maxLambdaSize": "50mb",
@@ -24,7 +24,8 @@
       },
       {
         "src": "/(.*)",
-        "dest": "form/wsgi.py"
+        "dest": "gamingform/wsgi.py"
       }
     ]
   }
+  
