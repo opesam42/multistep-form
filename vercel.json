@@ -10,7 +10,7 @@
         }
       },
       {
-        "src": "build_files.sh",
+        "src": "start.sh",
         "use": "@vercel/static-build",
         "config": {
           "distDir": "staticfiles" 
@@ -26,6 +26,7 @@
         "src": "/(.*)",
         "dest": "gamingform/wsgi.py"
       }
-    ]
+    ],
+    "outputDirectory": "staticfiles"
   }
   
