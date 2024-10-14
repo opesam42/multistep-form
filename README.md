@@ -60,5 +60,5 @@ A MySQL database is employed for storing the final form submissions.
 - Website - [Gbenga Opeyemi](https://gbenga.koyeb.app)
 - Frontend Mentor - [@opesam42](https://www.frontendmentor.io/profile/opesam42)
 - Twitter - [@gbengaope04](https://www.twitter.com/@gbengaopeyemi04)
-- LinkedIn - [Opeyemi Oluwagbemiga](www.linkedin.com/in/opeyemi-oluwagbemiga-2ba61423b)
+- LinkedIn - [Opeyemi Oluwagbemiga](https://linkedin.com/in/opeyemi-oluwagbemiga-2ba61423b)
 
