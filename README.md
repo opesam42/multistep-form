@@ -13,7 +13,7 @@ A MySQL database is employed for storing the final form submissions.
 
 ## Challenges Faced
 - **Session Data Handling:** One challenge was ensuring data consistency across steps. I solved this by using session variables effectively, ensuring no data was lost if the user navigated between steps.
-- **Real-Time Price Updates:** 
+- **Real-Time Price Updates:**  Handled with the Django session data and JavaScript.
 
 ## Learning Outcomes
 - **Session Handling**
@@ -62,5 +62,3 @@ A MySQL database is employed for storing the final form submissions.
 - Twitter - [@gbengaope04](https://www.twitter.com/@gbengaopeyemi04)
 - LinkedIn - [Opeyemi Oluwagbemiga](www.linkedin.com/in/opeyemi-oluwagbemiga-2ba61423b)
 
-## Conclusion
-To improve user experience and performance, the next step in developing the multistep form will involve implementing AJAX for asynchronous data submission. This will allow users to navigate between form steps without reloading the entire page, creating a more seamless and interactive experience.
